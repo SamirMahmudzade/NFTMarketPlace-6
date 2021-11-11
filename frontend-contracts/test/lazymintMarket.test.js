@@ -53,13 +53,13 @@ describe("LazyNFTMarketPlace", function () {
     for (let i = 1; i < 100; i++) {
       await lazyMinter.createVoucher(
         i,
-        "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+        "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
         minPrice
       );
     }
     const { voucher, signature } = await lazyMinter.createVoucher(
       101,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       minPrice
     );
 

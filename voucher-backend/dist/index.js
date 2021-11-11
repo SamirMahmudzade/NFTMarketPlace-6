@@ -12,7 +12,10 @@ const main = async () => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
     app.use((0, cors_1.default)());
-    const { PORT, DB_CONNECTION } = process.env;
+    //const { PORT, DB_CONNECTION } = process.env;
+    const DB_CONNECTION="mongodb+srv://shri:shri@cluster0.qkphc.mongodb.net/voucher-db";
+
+    const PORT = 5000;
     mongoose_1.default.connect(`${DB_CONNECTION}`, () => {
         console.log(`connected to db`);
     });

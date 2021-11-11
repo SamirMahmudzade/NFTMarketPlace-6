@@ -3,6 +3,7 @@ const { ethers } = require("hardhat");
 const { LazyMinter } = require("../lib");
 const { solidity } = require("ethereum-waffle");
 const chai = require("chai");
+
 const axios = require("axios").default;
 chai.use(solidity);
 
@@ -45,7 +46,7 @@ describe("LazyNFT", function () {
     const minPrice = ethers.constants.WeiPerEther; // charge 1 Eth
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       0,
       collection
     );
@@ -71,7 +72,7 @@ describe("LazyNFT", function () {
     const collection = "meme";
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       0,
       collection
     );
@@ -104,7 +105,7 @@ describe("LazyNFT", function () {
     const collection = "meme";
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       0,
       collection
     );
@@ -127,7 +128,7 @@ describe("LazyNFT", function () {
     const collection = "meme";
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       0,
       collection
     );
@@ -149,7 +150,7 @@ describe("LazyNFT", function () {
     const minPrice = ethers.constants.WeiPerEther; // charge 1 Eth
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       minPrice,
       collection
     );
@@ -180,7 +181,7 @@ describe("LazyNFT", function () {
     const collection = "meme";
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       minPrice,
       collection
     );
@@ -204,7 +205,7 @@ describe("LazyNFT", function () {
     const collection = "meme";
     const { voucher, signature } = await lazyMinter.createVoucher(
       1,
-      "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+      "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       minPrice,
       collection
     );
@@ -249,14 +250,14 @@ describe("LazyNFT", function () {
       const collection = "meme";
       const { voucher, signature } = await lazyMinter.createVoucher(
         tokenId,
-        "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+        "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
         minPrice,
         collection
       );
       objToSend.push({
         voucher,
         signature,
-        ipfs: "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+        ipfs: "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
         tokenId,
       });
     }
@@ -295,14 +296,14 @@ describe("LazyNFT", function () {
       const collection = "meme";
       const { voucher, signature } = await lazyMinter.createVoucher(
         tokenId,
-        "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+        "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
         minPrice,
         collection
       );
       objToSend.push({
         voucher,
         signature,
-        ipfs: "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+        ipfs: "https://ipfs.io/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
         tokenId,
       });
     }
