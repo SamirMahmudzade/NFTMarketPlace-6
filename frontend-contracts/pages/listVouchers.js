@@ -44,7 +44,7 @@ export class listVouchers extends Component {
               console.log("g")
               return(
                 <div className = "flex-1" style={{padding:"10px"}} key={index}>
-                <Card sx={{maxWidth:345}}>
+                <Card variant={"outlined"} sx={{maxWidth:345}}>
                     <CardMedia
                       component="img"
                       height="140"
@@ -57,6 +57,12 @@ export class listVouchers extends Component {
                     <CardContent>
                       Signature: {v.signature}
                     </CardContent>
+                    <CardActions>
+                    <Button size="small" color="primary">
+                      Buy
+                    </Button>
+                    </CardActions>
+
                 </Card>
                 </div>
               )
