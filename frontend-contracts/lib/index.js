@@ -21,6 +21,8 @@ class LazyMinter {
         { name: "minPrice", type: "uint256" },
         { name: "uri", type: "string" },
         { name: "collection", type: "string" },
+        {name: "amount", type:"uint256"},
+        
       ],
     };
   }
@@ -49,8 +51,8 @@ class LazyMinter {
     };
   }
 
-  async createVoucher(tokenId, uri, minPrice = 0, collection) {
-    const voucher = { tokenId, minPrice, uri, collection };
+  async createVoucher(tokenId, uri, minPrice = 0, collection,amount) {
+    const voucher = { tokenId, minPrice, uri, collection,amount };
     const typedData = await this._formatVoucher(voucher);
     const digest = TypedDataUtils.encodeDigest(typedData);
     const signature = await this.signer.signMessage(digest);
@@ -58,6 +60,7 @@ class LazyMinter {
       voucher,
       signature,
       digest,
+      
     };
   }
 }

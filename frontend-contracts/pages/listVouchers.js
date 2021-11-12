@@ -9,8 +9,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-
+import {red} from '@mui/material/colors';
 
 const dbURI="mongodb+srv://shri:shri@cluster0.qkphc.mongodb.net/voucher-db";
 
@@ -38,31 +41,36 @@ export class listVouchers extends Component {
     const vouchList = vouchers.length ? (
       (        
         <div className="flex">
-        
           {
             vouchers.map((v,index)=>{
               console.log("g")
               return(
                 <div className = "flex-1" style={{padding:"10px"}} key={index}>
-                <Card variant={"outlined"} sx={{maxWidth:345}}>
+                <Card sx={{maxWidth:345}} variant="outlined">
+                      <CardHeader
+                        title="Banksy"
+                        subheader={v.col.name + " collection"}
+                      />
                     <CardMedia
                       component="img"
                       height="140"
                       image={v.voucher.uri}
-                      alt="green iguana"
+                      
                     />
                     <CardContent>
-                      Price: {parseInt(v.voucher.minPrice.hex, 16)} Wei
+                      Price: {parseInt(v.voucher.minPrice.hex, 16)/Math.pow(10, 18)} ETH
                     </CardContent>
                     <CardContent>
                       Signature: {v.signature}
                     </CardContent>
                     <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" > 
                       Buy
                     </Button>
+                    <p>
+                      Only {v.col.amount} left!!!
+                    </p>
                     </CardActions>
-
                 </Card>
                 </div>
               )
@@ -70,7 +78,6 @@ export class listVouchers extends Component {
             )
           }
         </div>
-
       )
     ):(
       <div> No posts!!</div>  

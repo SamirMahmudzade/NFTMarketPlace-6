@@ -4,13 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+
 const VoucherSchema = new mongoose_1.default.Schema({
     voucher: {
         uri: {
             type: String,
             required: true,
         },
-        minPrice: {
+        minPrice: { 
             type: {
                 type: String,
                 required: true,
@@ -26,6 +27,17 @@ const VoucherSchema = new mongoose_1.default.Schema({
             unique: true,
         },
     },
+    col:{
+        name:{
+            type:String,
+            
+        },
+        amount:{
+            type: Number,
+            
+        }
+    },
+    
     signature: {
         type: String,
         required: true,
@@ -34,6 +46,19 @@ const VoucherSchema = new mongoose_1.default.Schema({
         type: Boolean,
         required: true,
     },
+    
 });
 exports.default = mongoose_1.default.model("Voucher", VoucherSchema);
 //# sourceMappingURL=voucher.js.map
+/*
+collection: {
+    col_name:{
+        type: String,
+        required: false,
+    },
+    amount:{
+        type: Number,
+        required: false,
+    }
+},
+*/

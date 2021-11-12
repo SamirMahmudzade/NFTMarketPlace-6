@@ -13,6 +13,10 @@ const CreateVoucher = async (req, res) => {
             minPrice: x.voucher.minPrice,
             tokenId: x.voucher.tokenId,
         },
+        col:{
+            name: x.voucher.collection,
+            amount: x.voucher.amount,
+        },
         signature: x.signature,
         redeemed: false,
     }));
@@ -32,3 +36,9 @@ const CreateVoucher = async (req, res) => {
 };
 exports.default = CreateVoucher;
 //# sourceMappingURL=create-voucher.js.map
+/*
+collection:{
+    col_name: x.voucher.coll_name,
+    
+},
+*/
