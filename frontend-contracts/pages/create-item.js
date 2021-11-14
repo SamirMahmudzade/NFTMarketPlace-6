@@ -8,7 +8,7 @@ import { NFTStorage, Blob } from 'nft.storage'
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 import { nftaddress, nftmarketaddress } from "../config";
-
+  
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
@@ -31,38 +31,47 @@ export default function CreateItem() {
   async function onChange(e) {
     console.log(e.target.files[0]);
     const image = e.target.files[0];
-    console.log('Here!!!');
     setFile(image);
     setFileURL(URL.createObjectURL(e.target.files[0]));
-    console.log(file);
-    console.log(fileURL);
   }
 
   async function mint() {
     const { name, description, price } = formInput;
     console.log(name)
     if (!name || !description || !price ) return;
+    
     try {
     console.log('minting');
     const storage = new NFTStorage({ endpoint, token });
     const cid1 = await storage.storeBlob(new Blob([file]));
     setCid(cid1);
-    const url = "ipfs.io/ipfs/"+cid1;
+    const url = cid1;
     console.log(url);
+    const data = JSON.stringify({
+      name, description, image: "https://ipfs.io/ipfs/"+url
+    })
+    const dataURL = await storage.storeBlob(new Blob([data]));
     setIPFSurl(url);
+    createSale(dataURL);
+    
     } catch (error) {
       console.log("Error uploading file: ", error);
     }    
   }
-/*
+  
+
   async function createSale(url) {
+    console.log("in createSale");
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-
+    
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+    console.log("got here")
     let transaction = await contract.createToken(url);
+    console.log("nftadress: "+nftaddress);
+    console.log("Created token");
     let tx = await transaction.wait();
     let event = tx.events[0];
     let value = event.args[2];
@@ -80,7 +89,7 @@ export default function CreateItem() {
     await transaction.wait();
     router.push("/");
   }
-*/
+
   return (
     <div className="flex justify-center">
       <div className="w-1/2 flex flex-col pb-12">
